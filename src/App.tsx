@@ -1,4 +1,4 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";
@@ -6,7 +6,7 @@ import TextToImage from "./pages/TextToImage";
 
 function App() {
     return (
-        <Router basename={import.meta.env.BASE_URL}>
+        <HashRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route path="*" element={<div>404 Not Found</div>} />
@@ -14,7 +14,7 @@ function App() {
                     <Route path="text-to-image" element={<TextToImage />} />
                 </Route>
             </Routes>
-        </Router>
+        </HashRouter>
     );
 }
 

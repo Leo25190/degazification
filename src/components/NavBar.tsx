@@ -14,7 +14,7 @@ const NavBar: React.FC = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
-                        <Nav.Link href="text-to-image" active={window.location.pathname.endsWith("text-to-image")}>
+                        <Nav.Link href="#/text-to-image" active={window.location.pathname.endsWith("text-to-image")}>
                             Text2Img
                         </Nav.Link>
                     </Nav>
