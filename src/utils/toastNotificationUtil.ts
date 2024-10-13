@@ -1,4 +1,4 @@
-import { toast, ToastOptions } from "react-toastify";
+import { Id, toast, ToastOptions } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Function to show a loading toast
@@ -13,7 +13,7 @@ const showLoadingToast = (message: string) => {
 };
 
 // Function to update the toast with a success or error message
-const updateToast = (toastId: string, message: string, type: "success" | "error", options?: ToastOptions) => {
+const updateToast = (toastId: Id, message: string, type: "success" | "error", options?: ToastOptions) => {
     toast.update(toastId, {
         render: message,
         type,
