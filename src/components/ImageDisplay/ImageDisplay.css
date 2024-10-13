@@ -1,0 +1,12 @@
+.gallery-item {
+    border-radius: 15px;
+}
+
+.gallery-item:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.img-border {
+    border-radius: 15px;
+}
