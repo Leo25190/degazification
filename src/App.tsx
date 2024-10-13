@@ -11,8 +11,7 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route path="*" element={<div>404 Not Found</div>} />
                     <Route index element={<HomePage />} />
-                    <Route path="/text-to-image" element={<TextToImage />} />
-                    {/* Add more routes here */}
+                    <Route path="text-to-image" element={<TextToImage />} />
                 </Route>
             </Routes>
         </Router>
