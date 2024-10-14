@@ -1,7 +1,7 @@
 import { PostTextToImageRequest } from "./types";
 import { TextToImageModel, textToImageModels } from "../../constants/textToImageModels";
 
-export const fetchImage2 = async (request: PostTextToImageRequest, token: string, model: TextToImageModel = textToImageModels[0]) => {
+export const fetchImage = async (request: PostTextToImageRequest, token: string, model: TextToImageModel = textToImageModels[0]) => {
     try {
         const response = await fetch(model.apiBaseUrl, {
             headers: {

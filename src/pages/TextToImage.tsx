@@ -3,24 +3,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageDisplay from "../components/ImageDisplay/ImageDisplay";
 import PromptForm from "../components/PromptForm";
-import useLocalStorage from "../hooks/useLocalStorage";
-import { TextToImageSettings } from "../models/settings/TextToImageSettings";
-import useImageGenerator from "../hooks/useTextToImage";
-import { showLoadingToast, updateToast } from "../utils/toastNotificationUtil";
-import { PostTextToImageRequest } from "../api/hfTextToImageApi/types";
 import { useState } from "react";
 
 const TextToImage = () => {
-    const [settings] = useLocalStorage<TextToImageSettings>("textToImageSettings", { token: "" });
-    const [request, setRequest] = useState<PostTextToImageRequest>({ inputs: "", negative_prompt: "" });
-    const { submit, isLoading, imageSrc } = useImageGenerator(request, settings.token);
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const toastId = showLoadingToast("Generating image...");
-        const result = await submit();
-        updateToast(toastId, result.message, result.success ? "success" : "error");
-    };
+    const [imagesSrc, setImagesSrc] = useState<string[]>([]);
 
     return (
         <Container className="mt-3">
@@ -53,8 +39,8 @@ const TextToImage = () => {
                 </p>
             </div>
 
-            <PromptForm onSubmit={handleSubmit} isLoading={isLoading} request={request} setRequest={setRequest} />
-            <ImageDisplay urls={imageSrc} />
+            <PromptForm setImagesList={setImagesSrc} />
+            <ImageDisplay urls={imagesSrc} />
             <ToastContainer />
         </Container>
     );

@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { fetchImage2 } from "../api/hfTextToImageApi/service";
+import { fetchImage } from "../api/hfTextToImageApi/service";
 import { PostTextToImageRequest } from "../api/hfTextToImageApi/types";
 
-const useImageGenerator = (request: PostTextToImageRequest, token: string) => {
+const useTextToImage = (request: PostTextToImageRequest, token: string) => {
     const [isLoading, setIsLoading] = useState(false);
     const [imageSrc, setImageSrc] = useState<string[]>([]);
 
     const submit = async () => {
         setIsLoading(true);
         try {
-            const result = await fetchImage2(request, token);
+            const result = await fetchImage(request, token);
             setImageSrc((prevSrc) => prevSrc.concat(result));
             return { success: true, message: "Image generated successfully" };
         } catch {
@@ -22,4 +22,4 @@ const useImageGenerator = (request: PostTextToImageRequest, token: string) => {
     return { submit, isLoading, imageSrc };
 };
 
-export default useImageGenerator;
+export default useTextToImage;

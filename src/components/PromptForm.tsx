@@ -3,20 +3,35 @@ import TextInput from "./TextInput";
 import { TextToImageSettings } from "../models/settings/TextToImageSettings";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { updateObjectProperties } from "../utils/formUtils";
+import { useState } from "react";
+import { showLoadingToast, updateToast } from "../utils/toastNotificationUtil";
+import { fetchImage } from "../api/hfTextToImageApi/service";
 
 interface Props {
-    onSubmit: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
-    isLoading: boolean;
-    request: PostTextToImageRequest;
-    setRequest: React.Dispatch<React.SetStateAction<PostTextToImageRequest>>;
+    setImagesList: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const PromptForm: React.FC<Props> = ({ onSubmit, isLoading, request, setRequest }) => {
+const PromptForm: React.FC<Props> = ({ setImagesList }) => {
     const [settings, setSettings] = useLocalStorage<TextToImageSettings>("textToImageSettings", { token: "" });
+    const [request, setRequest] = useState<PostTextToImageRequest>({ inputs: "", negative_prompt: "" });
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        setIsLoading(true);
+        e.preventDefault();
+        const toastId = showLoadingToast("Generating image...");
+        fetchImage(request, settings.token)
+            .then((res) => {
+                updateToast(toastId, "Image generated successfully", "success");
+                setImagesList((prevSrc) => prevSrc.concat(res));
+            })
+            .catch(() => updateToast(toastId, "Image failed to generate", "error"));
+        setIsLoading(false);
+    };
 
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <TextInput value={settings.token} name="token" label="Token" onChange={(e) => setSettings(updateObjectProperties(e, settings))} />
                 <div className="row">
                     <div className="col-12 col-md-6 mt-3">
