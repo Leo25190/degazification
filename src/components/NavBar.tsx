@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const base = import.meta.env.BASE_URL;
 
 const NavBar: React.FC = () => {
-    console.log(base);
-    console.log(window.location.pathname);
     return (
         <Navbar bg="dark" data-bs-theme="dark" expand="sm">
             <Container>

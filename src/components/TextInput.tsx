@@ -2,6 +2,7 @@ import React from "react";
 
 interface TextInputProps {
     value: string;
+    type: "text" | "number";
     name: string;
     label: string;
     emptiable?: boolean;
@@ -9,11 +10,11 @@ interface TextInputProps {
 }
 
 // Functional component without React.FC
-const TextInput = ({ value, name, label, onChange }: TextInputProps) => {
+const TextInput = ({ type, value, name, label, onChange }: TextInputProps) => {
     return (
         <div className="form-floating">
             <input
-                type="text"
+                type={type}
                 className={"form-control form-control-sm"}
                 placeholder={label}
                 id={name}

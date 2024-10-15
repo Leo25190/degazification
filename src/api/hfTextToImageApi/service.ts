@@ -3,6 +3,7 @@ import { TextToImageModel, textToImageModels } from "../../constants/textToImage
 
 export const fetchImage = async (request: PostTextToImageRequest, token: string, model: TextToImageModel = textToImageModels[0]) => {
     try {
+        console.log(JSON.stringify(request));
         const response = await fetch(model.apiBaseUrl, {
             headers: {
                 Authorization: "Bearer " + token,

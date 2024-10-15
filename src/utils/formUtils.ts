@@ -6,8 +6,9 @@
  * @returns A new object with the updated properties.
  */
 export const updateObjectProperties = <T>(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, object: T) => {
+    const key = e.target.name || e.target.id;
     return {
         ...object,
-        [e.target.name]: e.target.value,
+        [key]: e.target.value,
     } as T;
 };

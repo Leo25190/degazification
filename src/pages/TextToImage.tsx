@@ -14,17 +14,17 @@ const TextToImage = () => {
                 <h1>
                     Text to Image &gt;{" "}
                     <a href="https://huggingface.co/black-forest-labs/FLUX.1-schnell" target="_blank" rel="noopener noreferrer">
-                        Flux1.-Schnell
+                        Flux1-Schnell
                     </a>
                 </h1>
                 <p>
-                    To get your token, you must <a href="https://huggingface.co/login">login</a>/<a href="https://huggingface.co/join">sign up</a> to <a href="https://huggingface.co/">Hugging Face</a>
+                    To obtain your access token, please <a href="https://huggingface.co/login">log in</a> or <a href="https://huggingface.co/join">sign up</a> at <a href="https://huggingface.co/">Hugging Face</a>.
                 </p>
                 <p>
-                    Once you're connected to HF, you just have to click on your <strong>profile icon</strong> and then go to <strong>Settings &gt; Access Tokens</strong> to create a new token.
+                    Once logged in, click on your <strong>profile icon</strong>, navigate to <strong>Settings &gt; Access Tokens</strong>, and create a new token.
                 </p>
                 <p>
-                    Give your token a name like <i>"degazification-token"</i> and change{" "}
+                    Name your token, for example, <i>"degazification-token"</i>, and change the permission level from{" "}
                     <strong>
                         <i>Fine-grained</i>
                     </strong>{" "}
@@ -32,10 +32,11 @@ const TextToImage = () => {
                     <strong>
                         <i>Read</i>
                     </strong>
+                    .
                 </p>
-                <p>Copy the token and paste it in the input below.</p>
+                <p>Copy the generated token and paste it in the input field below.</p>
                 <p>
-                    <small>Other models and will be soon available and even custom models</small>
+                    <small>More models and customization options will be available soon. Width and height don't work for now...</small>
                 </p>
             </div>
 
