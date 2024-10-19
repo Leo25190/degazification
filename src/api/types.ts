@@ -3,7 +3,9 @@ export interface PostTextToImageRequest {
     negative_prompt?: string;
     guidance_scale?: number;
     num_inference_steps?: number;
-    height?: number;
-    width?: number;
+    target_size: {
+        height?: number;
+        width?: number;
+    };
     seed?: number;
 }

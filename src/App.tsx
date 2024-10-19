@@ -1,8 +1,8 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./Layout";
-import HomePage from "./pages/HomePage";
-import TextToImage from "./pages/TextToImage";
+import HomePage from "./common/components/HomePage";
+import TextToImage from "./features/textToImage/components/TextToImage";
 
 function App() {
     return (
