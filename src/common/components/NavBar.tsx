@@ -2,8 +2,6 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const base = import.meta.env.BASE_URL;
-
 const NavBar: React.FC = () => {
     return (
         <Navbar bg="dark" data-bs-theme="dark" expand="sm">
