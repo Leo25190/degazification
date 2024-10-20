@@ -18,7 +18,7 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({ urls }) => {
     };
 
     if (!urls || urls.length === 0) {
-        return <div>No images to display</div>;
+        return;
     }
 
     const reversedUrls = [...urls].reverse();

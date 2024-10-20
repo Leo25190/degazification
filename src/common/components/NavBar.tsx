@@ -13,6 +13,9 @@ const NavBar: React.FC = () => {
                         <Nav.Link href="#/text-to-image" active={window.location.pathname.endsWith("text-to-image")}>
                             Text2Img
                         </Nav.Link>
+                        <Nav.Link href="#/settings" active={window.location.pathname.endsWith("settings")}>
+                            Settings
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -9,7 +9,7 @@ interface Props {
     onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const RowSelectInput: React.FC<Props> = ({ id, label, options, onChange, className }) => {
+const SelectInput: React.FC<Props> = ({ id, label, options, onChange, className }) => {
     return (
         <div className={className}>
             <label className="form-label" htmlFor={id}>
@@ -26,4 +26,4 @@ const RowSelectInput: React.FC<Props> = ({ id, label, options, onChange, classNa
     );
 };
 
-export default RowSelectInput;
+export default SelectInput;

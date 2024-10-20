@@ -1,5 +1,5 @@
 import { PostTextToImageRequest } from "../../../api/types";
-import TextInput from "../../../common/components/FloatingInput";
+import Input from "../../../common/components/Input";
 
 interface Props {
     loading: boolean;
@@ -10,38 +10,20 @@ interface Props {
 
 const PromptForm: React.FC<Props> = ({ loading, onSubmit, request, onRequestChange }) => {
     return (
-        <>
-            <form onSubmit={onSubmit}>
-                <div className="row">
-                    <div className="col-12 col-md-6 mt-3">
-                        <TextInput type="text" value={request.inputs} name="inputs" label="Input" onChange={onRequestChange} />
-                    </div>
-                    <div className="col-12 col-md-6 mt-3">
-                        <TextInput type="text" value={request.negative_prompt || ""} name="negative_prompt" label="Negative Prompt" onChange={onRequestChange} />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-12 col-md-12 mt-3">
-                        <TextInput type="number" value={request.seed?.toString() || ""} name="seed" label="Seed" onChange={onRequestChange} />
-                    </div>
-                </div>
-
-                <label htmlFor="guidance_range" className="form-label mt-3">
-                    Guidance Scale
-                </label>
-                <input type="range" className="form-range" min="1.5" max="10" step="0.5" id="guidance_range" value={request.guidance_scale} onChange={onRequestChange} />
-
-                <label htmlFor="num_inference_steps" className="form-label mt-3">
-                    Denoising Steps
-                </label>
-                <input type="range" className="form-range" min="1" max="50" step="1" id="num_inference_steps" value={request.num_inference_steps} onChange={onRequestChange} />
-                <div className="d-flex align-items-center mt-2">
-                    <button type="submit" className="btn btn-primary me-2" disabled={loading}>
-                        Generate Image
-                    </button>
-                </div>
-            </form>
-        </>
+        <form onSubmit={onSubmit}>
+            <Input type="text" id="inputs" value={request.inputs} label="Prompt" onChange={onRequestChange} className="mt-3" />
+            <div className="row">
+                <Input type="text" id="negative_prompt" label="Negative Prompt" value={request.negative_prompt || ""} onChange={onRequestChange} className="col-12 col-md-6 mt-3" />
+                <Input type="number" id="seed" label="Seed" value={request.seed?.toString() || ""} onChange={onRequestChange} className="col-12 col-md-6 mt-3" />
+            </div>
+            <div className="row">
+                <Input type="range" id="guidance_scale" label="Guidance" value={request.guidance_scale} min={1.5} max={10} step={0.5} onChange={onRequestChange} className="col-12 col-md-6 mt-3" />
+                <Input type="range" id="num_inference_steps" label="Denoising Steps" value={request.num_inference_steps} min={1} max={50} step={1} onChange={onRequestChange} className="col-12 col-md-6 mt-3" />
+            </div>
+            <button type="submit" className="btn btn-primary me-2 mt-3" disabled={loading}>
+                Generate Image
+            </button>
+        </form>
     );
 };
 
