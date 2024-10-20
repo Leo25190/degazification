@@ -7,7 +7,6 @@ import { showLoadingToast, updateToast } from "../../../common/utils/toastNotifi
 import { fetchImage } from "../../../api/textToImageService";
 import { PostTextToImageRequest } from "../../../api/types";
 import { textToImageModels } from "../constants/textToImageModels";
-import Input from "../../../common/components/Input";
 import useLocalStorage from "../../../common/hooks/useLocalStorage";
 import { TextToImageSettings } from "../../../common/models/settings/TextToImageSettings";
 import { updateObjectProperties } from "../../../common/utils/formUtils";
